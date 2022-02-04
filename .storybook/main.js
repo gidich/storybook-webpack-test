@@ -1,12 +1,15 @@
 const path = require('path');
 module.exports = {
+  staticDirs: ['../public'],
   "stories": [
     "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
+    '../node_modules/storybook-addon-customize-antd-theme/dist/esm/stories/index.js'
   ],
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "storybook-addon-customize-antd-theme",
     { 
       name: "@storybook/preset-create-react-app",
       options:{ 
