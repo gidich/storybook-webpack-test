@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
   staticDirs: ['../public'],
   "stories": [
@@ -24,6 +26,21 @@ module.exports = {
     "builder": "webpack5"
   },
   "webpackFinal": async (config, { configType }) => {
+
+    config.resolve.fallback = { ...config.resolve.fallback, 
+      process: require.resolve("process/browser"),
+      zlib: require.resolve("browserify-zlib"),
+      stream: require.resolve("stream-browserify"),
+      util: require.resolve("util"),
+      buffer: require.resolve("buffer"),
+      asset: require.resolve("assert"),
+    };
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        Buffer: ["buffer", "Buffer"],
+        process: "process/browser",
+      }),
+    );
 
     config.module.rules.push(
       /*

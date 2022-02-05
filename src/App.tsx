@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 
 import {Button} from 'antd'
+import { PDFViewer } from '@react-pdf/renderer';
+import  TestPDF  from './test-pdf';
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
       <div>
         <Button type="primary">Button</Button>
       </div>
+      <PDFViewer>
+        <TestPDF />
+      </PDFViewer>
     </>
   );
 }
